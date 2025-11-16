@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mowing API - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        h2 {
+            color: #2d3748;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h3 {
+            color: #4a5568;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .endpoint {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .method {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .url {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #2d3748;
+        }
+
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: #edf2f7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .params,
+        .response {
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f7fafc;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .try-it {
+            background: #f0fff4;
+            border: 2px solid #48bb78;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        input,
+        button {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e0;
+            font-size: 1em;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        #api-result {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #cbd5e0;
+            display: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .badge-success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .badge-error {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌱 Mowing Condition API</h1>
+        <p class="subtitle">Check if it's suitable to mow based on weather conditions</p>
+
+        <h2>API Endpoint</h2>
+        <div class="endpoint">
+            <span class="method">POST</span>
+            <span class="url">/api/check-mowing</span>
+        </div>
+
+        <h2>Request</h2>
+        <h3>Request Body (JSON)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Required</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>location</code></td>
+                    <td>string</td>
+                    <td>Yes</td>
+                    <td>Town, city name, or postcode (e.g., "London", "Manchester", "SW1A 1AA")</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Example Request</h3>
+        <pre><code>curl -X POST https://yourdomain.com/api/check-mowing \
+  -H "Content-Type: application/json" \
+  -d '{"location": "London"}'</code></pre>
+
+        <h2>Response</h2>
+        <h3>Success Response (200 OK)</h3>
+        <pre><code>{
+  "success": true,
+  "canMow": true,
+  "location": {
+    "name": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5074,
+    "longitude": -0.1278
+  },
+  "recommendation": "YES, You Can Mow!",
+  "details": "Weather conditions are suitable for mowing your lawn.",
+  "weather": {
+    "temperature": 18.5,
+    "humidity": 65,
+    "windSpeed": 12,
+    "precipitation": 0,
+    "conditions": [
+      {
+        "text": "Temperature is suitable (18.5°C).",
+        "type": "positive"
+      },
+      {
+        "text": "Not currently raining.",
+        "type": "positive"
+      },
+      {
+        "text": "Wind conditions acceptable (12 km/h).",
+        "type": "positive"
+      }
+    ]
+  },
+  "timestamp": "2025-11-16T12:00:00.000Z"
+}</code></pre>
+
+        <h3>Error Response (400/500)</h3>
+        <pre><code>{
+  "success": false,
+  "error": "Invalid request",
+  "message": "Please provide a location field in the request body"
+}</code></pre>
+
+        <h2>Response Fields</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>success</code></td>
+                    <td>boolean</td>
+                    <td>Whether the request was successful</td>
+                </tr>
+                <tr>
+                    <td><code>canMow</code></td>
+                    <td>boolean</td>
+                    <td><strong>True if mowing is advised, False otherwise</strong></td>
+                </tr>
+                <tr>
+                    <td><code>location</code></td>
+                    <td>object</td>
+                    <td>Location details (name, country, coordinates)</td>
+                </tr>
+                <tr>
+                    <td><code>recommendation</code></td>
+                    <td>string</td>
+                    <td>Human-readable recommendation</td>
+                </tr>
+                <tr>
+                    <td><code>details</code></td>
+                    <td>string</td>
+                    <td>Additional context for the recommendation</td>
+                </tr>
+                <tr>
+                    <td><code>weather</code></td>
+                    <td>object</td>
+                    <td>Current weather data and detailed conditions</td>
+                </tr>
+                <tr>
+                    <td><code>timestamp</code></td>
+                    <td>string</td>
+                    <td>ISO 8601 timestamp of the response</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Try It Out</h2>
+        <div class="try-it">
+            <h3 style="margin-top: 0;">Test the API</h3>
+            <input type="text" id="test-location" placeholder="Enter location (e.g., London, Manchester)"
+                value="London">
+            <button onclick="testAPI()">Check Mowing Conditions</button>
+            <div id="api-result"></div>
+        </div>
+
+        <h2>Deployment</h2>
+        <p>This API is designed to be deployed on serverless platforms:</p>
+        <ul style="margin: 15px 0 15px 30px;">
+            <li><strong>Vercel:</strong> Deploy by connecting your GitHub repository to Vercel</li>
+            <li><strong>Netlify:</strong> Works with Netlify Functions</li>
+            <li><strong>AWS Lambda:</strong> Can be adapted for Lambda with API Gateway</li>
+        </ul>
+
+        <h3>Deploy to Vercel</h3>
+        <pre><code>npm install -g vercel
+vercel login
+vercel deploy</code></pre>
+
+        <h2>Rate Limits</h2>
+        <p>This API uses the free Open-Meteo weather service. Please be respectful of their rate limits and consider
+            implementing caching for production use.</p>
+
+    </div>
+
+    <script>
+        async function testAPI() {
+            const location = document.getElementById('test-location').value;
+            const resultDiv = document.getElementById('api-result');
+
+            if (!location) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<span class="badge badge-error">Error</span> Please enter a location';
+                return;
+            }
+
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Loading...';
+
+            try {
+                // Adjust the URL based on your deployment
+                const apiUrl = window.location.origin + '/api/check-mowing';
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ location })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const badge = data.canMow
+                        ? '<span class="badge badge-success">✓ Can Mow</span>'
+                        : '<span class="badge badge-error">✗ Don\'t Mow</span>';
+
+                    resultDiv.innerHTML = `
+                        ${badge}
+                        <h4 style="margin-top: 10px;">${data.recommendation}</h4>
+                        <p><strong>Location:</strong> ${data.location.name}, ${data.location.country}</p>
+                        <p><strong>Temperature:</strong> ${data.weather.temperature}°C</p>
+                        <p><strong>Humidity:</strong> ${data.weather.humidity}%</p>
+                        <p><strong>Wind:</strong> ${data.weather.windSpeed} km/h</p>
+                        <pre style="margin-top: 15px;">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<span class="badge badge-error">Error</span> ${data.message}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="badge badge-error">Error</span> ${error.message}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+    "name": "getthemowerout-api",
+    "version": "1.0.0",
+    "description": "API for checking mowing conditions based on weather",
+    "type": "module",
+    "scripts": {
+        "dev": "vercel dev"
+    },
+    "keywords": [
+        "weather",
+        "mowing",
+        "lawn",
+        "api"
+    ],
+    "author": "",
+    "license": "MIT"
+}
