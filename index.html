@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Should I Mow My Lawn? - UK Weather Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌱 Should I Mow My Lawn?</h1>
+            <p class="subtitle">Get weather-based mowing advice for your UK location</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="location-input">Enter your UK location (town/city or postcode):</label>
+                <div class="input-group">
+                    <input type="text" id="location-input" placeholder="e.g., London, Manchester, SW1A 1AA">
+                    <button id="check-btn">Check Weather</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Checking weather conditions...</p>
+            </div>
+
+            <div id="error" class="error hidden">
+                <p id="error-message"></p>
+            </div>
+
+            <div id="result" class="result hidden">
+                <div class="recommendation">
+                    <div id="recommendation-icon" class="icon"></div>
+                    <h2 id="recommendation-text"></h2>
+                    <p id="recommendation-detail"></p>
+                </div>
+
+                <div class="weather-info">
+                    <h3>Current Weather Conditions</h3>
+                    <div id="weather-details"></div>
+                </div>
+
+                <div class="reasons">
+                    <h3>Analysis</h3>
+                    <ul id="reason-list"></ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Weather data provided by <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a></p>
+            <p class="disclaimer">This tool provides guidance only. Use your judgment for final mowing decisions.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

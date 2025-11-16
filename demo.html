@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Should I Mow My Lawn?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌱 Should I Mow My Lawn?</h1>
+            <p class="subtitle">Demo with Sample Weather Data</p>
+        </header>
+
+        <main>
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);">Example: Good Conditions</h2>
+            
+            <div class="result">
+                <div class="recommendation good">
+                    <div class="icon">✅</div>
+                    <h2>YES, You Can Mow! ✓</h2>
+                    <p class="recommendation-detail">Weather conditions are suitable for mowing your lawn.</p>
+                </div>
+
+                <div class="weather-info">
+                    <h3>Current Weather Conditions</h3>
+                    <div id="weather-details">
+                        <div class="weather-item">
+                            <div class="label">Temperature</div>
+                            <div class="value">18°C</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Humidity</div>
+                            <div class="value">65%</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Wind Speed</div>
+                            <div class="value">12 km/h</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Precipitation</div>
+                            <div class="value">0 mm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reasons">
+                    <h3>Analysis</h3>
+                    <ul>
+                        <li class="positive">Temperature is suitable (18°C).</li>
+                        <li class="positive">Not currently raining.</li>
+                        <li class="positive">Wind conditions acceptable (12 km/h).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr style="margin: 40px 0; border: none; border-top: 2px solid var(--border-color);">
+
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);">Example: Poor Conditions</h2>
+            
+            <div class="result">
+                <div class="recommendation bad">
+                    <div class="icon">❌</div>
+                    <h2>NO, Wait to Mow ✗</h2>
+                    <p class="recommendation-detail">Current conditions are not ideal for mowing. Check the analysis below.</p>
+                </div>
+
+                <div class="weather-info">
+                    <h3>Current Weather Conditions</h3>
+                    <div id="weather-details">
+                        <div class="weather-item">
+                            <div class="label">Temperature</div>
+                            <div class="value">5°C</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Humidity</div>
+                            <div class="value">92%</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Wind Speed</div>
+                            <div class="value">35 km/h</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="label">Precipitation</div>
+                            <div class="value">2.5 mm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reasons">
+                    <h3>Analysis</h3>
+                    <ul>
+                        <li class="negative">Temperature too cold (5°C). Grass below 7°C is dormant and shouldn't be mowed.</li>
+                        <li class="negative">Currently raining (2.5mm). Wait for rain to stop and grass to dry.</li>
+                        <li class="negative">Strong winds (35 km/h, gusts 42 km/h). Unsafe and ineffective mowing.</li>
+                        <li class="negative">Very high humidity (92%). Grass likely wet from dew or moisture.</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>This is a demo page showing example results</p>
+            <p><a href="index.html">Go to main page</a></p>
+        </footer>
+    </div>
+</body>
+</html>
