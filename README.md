@@ -4,7 +4,7 @@ A simple website that helps UK residents decide if it's suitable to mow their gr
 
 ## Live Website
 
-Visit: [getthemowerout.github.io](https://getthemowerout.github.io)
+Visit: [josephjoel3099.github.io/getthemowerout/](https://josephjoel3099.github.io/getthemowerout/)
 
 ## Features
 
